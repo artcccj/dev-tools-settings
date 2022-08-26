@@ -31,22 +31,17 @@ nnoremap U <C-r>
 " 跳转相关配置
 " 跳转到实体类
 nnoremap gc :action GotoClass<CR>
-
 " 跳转到声明
 nnoremap gd :action GotoDeclaration<CR>
-
 " 跳转到父类方法
 nnoremap gu :action GotoSuperMethod<CR>
-
 " 跳到实现类
 nnoremap gi :action GotoImplementation<CR>
-
 " 跳转到文件
 nnoremap gf :action GotoFile<CR>
-
 " 跳转Action
 nnoremap ga :action GotoAction<CR>
-
+vnoremap ga :action GotoAction<CR>
 " 跳到测试类，没有自动创建
 nnoremap gt :action GotoTest<CR>
 " 显示文件结构
@@ -54,22 +49,10 @@ nnoremap gm :action FileStructurePopup<CR>
 " 展示类继承关系
 nnoremap gh :action TypeHierarchy<CR>
 
-" 注释 与 vim 注释快捷键保持一致
-nnoremap <Leader>cc :action CommentByLineComment<CR>
-
-" 优化导包
-nnoremap <Leader>O :action OptimizeImports<CR>
-" run
-nnoremap <Leader>R :action Run<CR>
-" debug
-nnoremap <Leader>D :action Debug<CR>
-
 " 重命名 文件
 nnoremap <Leader>rf :action RenameFile<CR>
 " 重命名 变量、类名
 nnoremap <Leader>re :action RenameElement<CR>
-" 抽取接口
-nnoremap <Leader>i :action ExtractInterface<CR>
 
 " 格式化代码
 nnoremap == :action ReformatCode<CR>
@@ -77,6 +60,7 @@ nnoremap == :action ReformatCode<CR>
 " 抽取方法
 nnoremap me :action ExtractMethod<CR>
 vnoremap me :action ExtractMethod<CR>
+
 nnoremap mj :action MethodDown<CR>
 nnoremap mk :action MethodUp<CR>
 " 实现方法
@@ -84,25 +68,21 @@ nnoremap mi :action ImplementMethods<CR>
 " 覆盖方法
 nnoremap mo :action OverrideMethods<CR>
 
-" 上一个tab
-nnoremap <Leader>h :action PreviousTab<CR>
-
-" 下一个tab
-nnoremap <Leader>l :action NextTab<CR>
-
-" 展示错误信息
-nnoremap <Leader>e :action ShowErrorDescription<CR>
-
-" 展示错误信息
-nnoremap <Leader>ne :action GotoNextError<CR>
-
 set NERDTree
 " NERDTree config
 nnoremap tt :NERDTreeToggle<CR>
 nnoremap tc :NERDTreeClose<CR>
 nnoremap tf :NERDTreeFocus<CR>
+" 上一个tab
+nnoremap th :action PreviousTab<CR>
+" 下一个tab
+nnoremap tl :action NextTab<CR>
 
 " 设置新工程打开方式为新开窗口
 " GotoAction Registry 去掉 ide.mac.bigsur.window.with.tabs.enabled
 " 快捷操作
 " <C-n> next <C-p> previous
+
+" Refactor
+nnoremap gr :action Refactorings.QuickListPopupAction<CR>
+vnoremap gr :action Refactorings.QuickListPopupAction<CR>
