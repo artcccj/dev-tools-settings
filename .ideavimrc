@@ -18,6 +18,8 @@ let mapleader=' '
 nnoremap U <C-r>
 
 " 跳转相关配置
+nnoremap <leader><leader> :action SearchEverywhere<CR>
+vnoremap <leader><leader> :action SearchEverywhere<CR>
 " 跳转到实体类
 nnoremap gc :action GotoClass<CR>
 " 跳转到声明
