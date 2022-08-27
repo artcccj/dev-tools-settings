@@ -1,14 +1,16 @@
 syntax on
-set laststatus=4
-" 将tab替换为相应数量的空格
-set expandtab
-" 使用系统剪切板
-set clipboard+=unnamedplus
-set autoindent              " indent a new line the same amount as the line just typed
+set expandtab " 将tab替换为相应数量的空格
+set clipboard+=unnamedplus " 使用系统剪切板
+
+set ideajoin " 使用idea 的行连接方式
+set idearefactormode=keep
+set easymotion
+set surround
+
+set autoindent
 set tabstop=2
 set shiftwidth=2
 set history=2000
-
 set nobackup
 set noswapfile
 
@@ -17,64 +19,72 @@ let mapleader=' '
 " redo
 nnoremap U <C-r>
 
-" 跳转相关配置
-nnoremap <leader><leader> :action SearchEverywhere<CR>
-vnoremap <leader><leader> :action SearchEverywhere<CR>
-" 跳转到实体类
-nnoremap gc :action GotoClass<CR>
-" 跳转到声明
-nnoremap gd :action GotoDeclaration<CR>
-" 跳转到父类方法
-nnoremap gu :action GotoSuperMethod<CR>
-" 跳到实现类
-nnoremap gi :action GotoImplementation<CR>
-" 跳转到文件
-nnoremap gf :action GotoFile<CR>
-" 跳转Action
-nnoremap ga :action GotoAction<CR>
-vnoremap ga :action GotoAction<CR>
-" 跳到测试类，没有自动创建
-nnoremap gt :action GotoTest<CR>
-" 显示文件结构
-nnoremap gm :action FileStructurePopup<CR>
-" 展示类继承关系
-nnoremap gh :action TypeHierarchy<CR>
-
-" 重命名 文件
-nnoremap <Leader>rf :action RenameFile<CR>
-" 重命名 变量、类名
-nnoremap <Leader>re :action RenameElement<CR>
-
-" 格式化代码
-nnoremap == :action ReformatCode<CR>
-
-" 抽取方法
-nnoremap me :action ExtractMethod<CR>
-vnoremap me :action ExtractMethod<CR>
-
-" 实现方法
-nnoremap mi :action ImplementMethods<CR>
-" 覆盖方法
-nnoremap mo :action OverrideMethods<CR>
-
 set NERDTree
 " NERDTree config
 nnoremap tt :NERDTreeToggle<CR>
 nnoremap tc :NERDTreeClose<CR>
 nnoremap tf :NERDTreeFocus<CR>
-" 上一个tab
-nnoremap th :action PreviousTab<CR>
-" 下一个tab
-nnoremap tl :action NextTab<CR>
 
-" 设置新工程打开方式为新开窗口
-" GotoAction Registry 去掉 ide.mac.bigsur.window.with.tabs.enabled
-" 快捷操作
-" <C-n> next <C-p> previous
+nnoremap H ^
+nnoremap L $
+
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+
+" 窗口之间跳转
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Actions
+nnoremap <leader><leader> :action SearchEverywhere<CR>
+vnoremap <leader><leader> :action SearchEverywhere<CR>
+
+" 跳转相关配置
+nnoremap gc :action GotoClass<CR> " 跳转到实体类
+nnoremap gd :action GotoDeclaration<CR> " 跳转到声明
+nnoremap gu :action GotoSuperMethod<CR> " 跳转到父类方法
+nnoremap gi :action GotoImplementation<CR> " 跳到实现类
+nnoremap gf :action GotoFile<CR> " 跳转到文件
+nnoremap ga :action GotoAction<CR> " 跳转Action
+vnoremap ga :action GotoAction<CR>
+nnoremap gt :action GotoTest<CR> " 跳到测试类，没有自动创建
+nnoremap gm :action FileStructurePopup<CR> " 显示文件结构
+nnoremap gh :action TypeHierarchy<CR> " 展示类继承关系
+
+nnoremap <Leader>rf :action RenameFile<CR> " 重命名 文件
+nnoremap <Leader>re :action RenameElement<CR> " 重命名 变量、类名
+
+nnoremap == :action ReformatCode<CR> " 格式化代码
+
+" 抽取方法
+nnoremap me :action ExtractMethod<CR>
+vnoremap me :action ExtractMethod<CR>
+
+nnoremap mi :action ImplementMethods<CR> " 实现方法
+nnoremap mo :action OverrideMethods<CR> " 覆盖方法
+nnoremap <s-tab> :action PreviousTab<CR> " 上一个tab
+nnoremap <tab> :action NextTab<CR> " 下一个tab
 
 " Refactor
 nnoremap gr :action Refactorings.QuickListPopupAction<CR>
 vnoremap gr :action Refactorings.QuickListPopupAction<CR>
 
-nnoremap H ^
-nnoremap L $
+" 窗口分割
+nnoremap <c-\> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+
+" 退出
+nnoremap zz :action CloseContent<CR>
+nnoremap za :action CloseAllEditors<CR>
+
+" 终端
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+sethandler <c-t> a:vim
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+
+nnoremap <leader>m :action Git.Menu<CR>
+nnoremap <leader>s :action QuickChangeScheme<CR>
+nnoremap <leader>i :action Generate<CR>
