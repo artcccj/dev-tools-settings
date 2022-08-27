@@ -1,23 +1,12 @@
-" ":set keep-english-in-normal
-" ":set keep-english-in-normal-and-restore-in-insert
-set nu
-" set relativenumber
-
 syntax on
-
 set laststatus=4
-
 " 将tab替换为相应数量的空格
 set expandtab
-
 " 使用系统剪切板
 set clipboard+=unnamedplus
-
 set autoindent              " indent a new line the same amount as the line just typed
-
 set tabstop=2
 set shiftwidth=2
-
 set history=2000
 
 set nobackup
@@ -61,8 +50,6 @@ nnoremap == :action ReformatCode<CR>
 nnoremap me :action ExtractMethod<CR>
 vnoremap me :action ExtractMethod<CR>
 
-nnoremap mj :action MethodDown<CR>
-nnoremap mk :action MethodUp<CR>
 " 实现方法
 nnoremap mi :action ImplementMethods<CR>
 " 覆盖方法
@@ -86,3 +73,6 @@ nnoremap tl :action NextTab<CR>
 " Refactor
 nnoremap gr :action Refactorings.QuickListPopupAction<CR>
 vnoremap gr :action Refactorings.QuickListPopupAction<CR>
+
+nnoremap H ^
+nnoremap L $
