@@ -19,8 +19,8 @@ let mapleader=' '
 " redo
 nnoremap U <C-r>
 
-set NERDTree
 " NERDTree config
+set NERDTree
 nnoremap tt :NERDTreeToggle<CR>
 nnoremap tc :NERDTreeClose<CR>
 nnoremap tf :NERDTreeFocus<CR>
@@ -38,53 +38,54 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " Actions
-nnoremap <leader><leader> :action SearchEverywhere<CR>
-vnoremap <leader><leader> :action SearchEverywhere<CR>
+nmap <leader><leader> <Action>(SearchEverywhere)
+vmap <leader><leader> <Action>(SearchEverywhere)
 
 " 跳转相关配置
-nnoremap gc :action GotoClass<CR> " 跳转到实体类
-nnoremap gd :action GotoDeclaration<CR> " 跳转到声明
-nnoremap gu :action GotoSuperMethod<CR> " 跳转到父类方法
-nnoremap gi :action GotoImplementation<CR> " 跳到实现类
-nnoremap gf :action GotoFile<CR> " 跳转到文件
-nnoremap ga :action GotoAction<CR> " 跳转Action
-vnoremap ga :action GotoAction<CR>
-nnoremap gt :action GotoTest<CR> " 跳到测试类，没有自动创建
-nnoremap gm :action FileStructurePopup<CR> " 显示文件结构
-nnoremap gh :action TypeHierarchy<CR> " 展示类继承关系
+nmap gc <Action>(GotoClass) " 跳转到实体类
+nmap gd <Action>(GotoDeclaration) " 跳转到声明
+nmap gu <Action>(GotoSuperMethod) " 跳转到父类方法
+nmap gi <Action>(GotoImplementation) " 跳到实现类
+nmap gf <Action>(GotoFile) " 跳转到文件
+nmap ga <Action>(GotoAction) " 跳转Action
+vmap ga <Action>(GotoAction)
+nmap gt <Action>(GotoTest) " 跳到测试类，没有自动创建
+nmap gm <Action>(FileStructurePopup) " 显示文件结构
+nmap gh <Action>(TypeHierarchy) " 展示类继承关系
 
-nnoremap <Leader>rf :action RenameFile<CR> " 重命名 文件
-nnoremap <Leader>re :action RenameElement<CR> " 重命名 变量、类名
+nmap <Leader>rf <Action>(RenameFile) " 重命名 文件
+nmap <Leader>re <Action>(RenameElement) " 重命名 变量、类名
 
-nnoremap == :action ReformatCode<CR> " 格式化代码
+nmap == <Action>(ReformatCode) " 格式化代码
 
 " 抽取方法
-nnoremap me :action ExtractMethod<CR>
-vnoremap me :action ExtractMethod<CR>
+nmap me <Action>(ExtractMethod)
+vmap me <Action>(ExtractMethod)
 
-nnoremap mi :action ImplementMethods<CR> " 实现方法
-nnoremap mo :action OverrideMethods<CR> " 覆盖方法
-nnoremap <s-tab> :action PreviousTab<CR> " 上一个tab
-nnoremap <tab> :action NextTab<CR> " 下一个tab
+nmap mi <Action>(ImplementMethods) " 实现方法
+nmap mo <Action>(OverrideMethods) " 覆盖方法
+nmap <s-tab> <Action>(PreviousTab) " 上一个tab
+nmap <tab> <Action>(NextTab) " 下一个tab
 
 " Refactor
-nnoremap gr :action Refactorings.QuickListPopupAction<CR>
-vnoremap gr :action Refactorings.QuickListPopupAction<CR>
+nmap gr <Action>(Refactorings.QuickListPopupAction)
+vmap gr <Action>(Refactorings.QuickListPopupAction)
 
 " 窗口分割
-nnoremap <c-\> :action SplitVertically<CR>
-nnoremap <c--> :action SplitHorizontally<CR>
-nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+nmap <c-\> <Action>(SplitVertically)
+nmap <c--> <Action>(SplitHorizontally)
+nmap <c-m> <Action>(MoveEditorToOppositeTabGroup)
 
 " 退出
-nnoremap zz :action CloseContent<CR>
-nnoremap za :action CloseAllEditors<CR>
+nmap zz <Action>(CloseContent)
+nmap za <Action>(CloseAllEditors)
 
 " 终端
-nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+nmap <leader>t <Action>(Terminal.OpenInTerminal)
 sethandler <c-t> a:vim
-nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nmap <c-t> <Action>(ActivateTerminalToolWindow)
 
-nnoremap <leader>m :action Git.Menu<CR>
-nnoremap <leader>s :action QuickChangeScheme<CR>
-nnoremap <leader>i :action Generate<CR>
+nmap <leader>m <Action>(Git.Menu)
+nmap <leader>s <Action>(QuickChangeScheme)
+nmap <leader>i <Action>(Generate)
+nmap <leader>e <Action>(GotoNextError)
