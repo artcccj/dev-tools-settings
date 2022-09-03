@@ -1,14 +1,28 @@
 syntax on
-set expandtab " 将tab替换为相应数量的空格
-set clipboard+=unnamedplus " 使用系统剪切板
-
-set ideajoin " 使用idea 的行连接方式
+" 将tab替换为相应数量的空格
+set expandtab
+" 使用系统剪切板
+set clipboard+=unnamedplus
+" 使用idea 的行连接方式
+set ideajoin
 set idearefactormode=keep
 
 let mapleader=' '
 
 set easymotion
-" set surround
+set surround
+
+" multiple-cursors start
+set multiple-cursors
+
+map <C-n> <Plug>NextWholeOccurrence
+map g<C-n> <Plug>NextOccurrence
+map <C-x> <Plug>SkipOccurrence
+map <C-p> <Plug>RemoveOccurrence
+
+map <S-C-n> <Plug>AllWholeOccurrences
+map g<S-C-n> <Plug>AllOccurrences
+" multiple-cursors end
 
 " redo
 map U <C-r>
@@ -26,44 +40,53 @@ map L $
 map <leader>s <Action>(SearchEverywhere)
 map <leader>f <Action>(Find)
 map <leader>F <Action>(FindInPath)
-
-map <leader>o <Action>(GotoClass) " 跳转到类
-map <leader>O <Action>(GotoFile) " 跳转到文件
-
-map <leader>m <Action>(FileStructurePopup) " 显示文件结构
-map <leader>h <Action>(TypeHierarchy) " 展示类继承关系
-map <leader>d <Action>(EditorDuplicate) " 复制一行
-vmap <leader>d <Action>(EditorDuplicateLines) " 复制选中的行
+" 跳转到类
+map <leader>o <Action>(GotoClass)
+" 跳转到文件
+map <leader>O <Action>(GotoFile)
+" 显示文件结构
+map <leader>m <Action>(FileStructurePopup)
+" 展示类继承关系
+map <leader>h <Action>(TypeHierarchy)
+" 复制一行
+map <leader>d <Action>(EditorDuplicate)
+" 复制选中的行
+vmap <leader>d <Action>(EditorDuplicateLines)
 map <leader>n <Action>(Generate)
 map <leader>e <Action>(GotoNextError)
-map <leader>A <Action>(RenameFile) " 重命名 文件
-map <leader>a <Action>(RenameElement) " 重命名 变量、类名
+" 重命名 文件
+map <leader>A <Action>(RenameFile)
+" 重命名 变量、类名
+map <leader>a <Action>(RenameElement)
 
-map <leader>r <Action>(RunClass) " 运行
-map <leader>R <Action>(DebugClass) " debug
+map <leader>r <Action>(RunClass)
+map <leader>R <Action>(DebugClass)
 
-map <leader>b <Action>(ToggleLineBreakpoint) " 打断点
+map <leader>b <Action>(ToggleLineBreakpoint)
 
-map == <Action>(ReformatCode) " 格式化代码
+map == <Action>(ReformatCode)
+
+map <leader>/ <Action>(CommentByLineComment)
+vmap <leader>/ <Action>(CommentByBlockComment)
 
 " 退出
 map <leader>c <Action>(CloseContent)
 map <leader>C <Action>(CloseAllEditors)
 
 " 跳转相关配置
-map gd <Action>(GotoDeclaration) " 跳转到声明
-map gu <Action>(GotoSuperMethod) " 跳转到父类方法
-map gi <Action>(GotoImplementation) " 跳到实现类
-map ga <Action>(GotoAction) " 跳转Action
-map gt <Action>(GotoTest) " 跳到测试类，没有自动创建
+map gd <Action>(GotoDeclaration)
+map gu <Action>(GotoSuperMethod)
+map gi <Action>(GotoImplementation)
+map ga <Action>(GotoAction)
+map gt <Action>(GotoTest)
 
 " 抽取方法
 map me <Action>(ExtractMethod)
 
-map mi <Action>(ImplementMethods) " 实现方法
-map mo <Action>(OverrideMethods) " 覆盖方法
-map <s-tab> <Action>(PreviousTab) " 上一个tab
-map <tab> <Action>(NextTab) " 下一个tab
+map mi <Action>(ImplementMethods)
+map mo <Action>(OverrideMethods)
+map <s-tab> <Action>(PreviousTab)
+map <tab> <Action>(NextTab)
 
 " Refactor
 map gr <Action>(Refactorings.QuickListPopupAction)
@@ -87,6 +110,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " 终端
-map <c-t> <Action>(Terminal.OpenInTerminal)
 sethandler <c-t> a:vim
+map <c-t> <Action>(Terminal.OpenInTerminal)
 map <leader>t <Action>(ActivateTerminalToolWindow)
