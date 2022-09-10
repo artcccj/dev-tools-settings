@@ -6,6 +6,7 @@ set expandtab
 set clipboard+=unnamedplus
 " 使用idea 的行连接方式
 set ideajoin
+set ignorecase
 set idearefactormode=keep
 
 let mapleader=' '
@@ -15,14 +16,12 @@ set surround
 
 " multiple-cursors start
 set multiple-cursors
-
-map <C-n> <Plug>NextWholeOccurrence
-map g<C-n> <Plug>NextOccurrence
-map <C-x> <Plug>SkipOccurrence
-map <C-p> <Plug>RemoveOccurrence
-
-map <S-C-n> <Plug>AllWholeOccurrences
-map g<S-C-n> <Plug>AllOccurrences
+vmap <C-j> <Plug>NextWholeOccurrence
+vmap g<C-j> <Plug>NextOccurrence
+vmap <C-x> <Plug>SkipOccurrence
+vmap <C-k> <Plug>RemoveOccurrence
+vmap <S-C-j> <Plug>AllWholeOccurrences
+vmap g<S-C-j> <Plug>AllOccurrences
 " multiple-cursors end
 
 " redo
@@ -42,12 +41,10 @@ map <leader>g <Action>(EditorCompleteStatement)
 map <leader>x <Action>(ShowIntentionActions)
 
 map <leader>s <Action>(SearchEverywhere)
-map <leader>f <Action>(Find)
-map <leader>F <Action>(FindInPath)
+map <leader>f <Action>(FindInPath)
 " 跳转到类
 map <leader>o <Action>(GotoClass)
-" 跳转到文件
-map <leader>O <Action>(GotoFile)
+
 " 显示文件结构
 map <leader>m <Action>(FileStructurePopup)
 " 展示类继承关系
@@ -58,6 +55,7 @@ map <leader>d <Action>(EditorDuplicate)
 vmap <leader>d <Action>(EditorDuplicateLines)
 map <leader>n <Action>(Generate)
 map <leader>e <Action>(GotoNextError)
+
 " 重命名 文件
 map <leader>A <Action>(RenameFile)
 " 重命名 变量、类名
@@ -65,17 +63,15 @@ map <leader>a <Action>(RenameElement)
 
 map <leader>r <Action>(RunClass)
 map <leader>R <Action>(DebugClass)
-
 map <leader>b <Action>(ToggleLineBreakpoint)
-
-map == <Action>(ReformatCode)
-
 map <leader>/ <Action>(CommentByLineComment)
 vmap <leader>/ <Action>(CommentByBlockComment)
 
 " 退出
 map <leader>c <Action>(CloseContent)
 map <leader>C <Action>(CloseAllEditors)
+
+map == <Action>(ReformatCode)
 
 " 跳转相关配置
 map gd <Action>(GotoDeclaration)
@@ -86,9 +82,9 @@ map gt <Action>(GotoTest)
 
 " 抽取方法
 map me <Action>(ExtractMethod)
-
 map mi <Action>(ImplementMethods)
 map mo <Action>(OverrideMethods)
+
 map <s-tab> <Action>(PreviousTab)
 map <tab> <Action>(NextTab)
 
@@ -108,13 +104,10 @@ sethandler <c-j> a:vim
 sethandler <c-k> a:vim
 
 " 窗口之间跳转
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-
-map <leader>j <c-d>
-map <leader>k <c-u>
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
 
 " 终端
 sethandler <c-t> a:vim
